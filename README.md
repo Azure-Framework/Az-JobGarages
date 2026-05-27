@@ -1,22 +1,59 @@
-# Az-JobGarages
+# Az Job Garages
 
-Az Job Vehicle Spawner (EMS/Fire/Police) w/ cooldown.
+Az Job Vehicle Spawner (EMS/Fire/Police) w/ cooldown
 
-**Resource:** `Az-JobGarages`
-**Author:** Azure(TheStoicBear)
-**fx_version:** `cerulean`
+[Framework Docs](https://madebyazure.com/framework/) | [Discord Support](https://discord.gg/tBg2U6CTHE)
 
-## What it does
-Az Job Vehicle Spawner (EMS/Fire/Police) w/ cooldown.
+## Status
 
-## Features
-_None_
+- Resource: `Az-JobGarages`
+- Version: `cerulean`
+- Framework: `Az-Framework`
 
-## Commands
-- `/az_jobdebug`
+## Install
 
-## Exports
-_None_
+```cfg
+ensure oxmysql
+ensure ox_lib
+ensure Az-Framework
+ensure Az-JobGarages
+```
 
-## Dependencies
+<details>
+<summary>Dependencies</summary>
+
 - `Az-Framework`
+
+
+</details>
+
+<details>
+<summary>Configuration Guide</summary>
+
+1. Place the resource in your server resources folder.
+2. Start dependencies before this resource.
+3. Review `config.lua` or `shared/config.lua` when present.
+4. Restart the resource after changing config values.
+
+</details>
+
+<details>
+<summary>Az-Framework Integration</summary>
+
+Use Az-Framework exports for character, money, job, metadata, and inventory bridge behavior.
+
+```lua
+local Az = exports['Az-Framework']:GetObject()
+local player = exports['Az-Framework']:GetPlayer(source)
+local snapshot = exports['Az-Framework']:GetBridgePlayerSnapshot(source)
+```
+
+</details>
+
+<details>
+<summary>Support</summary>
+
+- Docs: https://madebyazure.com/framework/
+- Discord: https://discord.gg/tBg2U6CTHE
+
+</details>

@@ -1,24 +1,24 @@
 Config = Config or {}
 
--- Core settings
+
 Config.DrawDistance = 25.0
 Config.MarkerType   = 36
 Config.MarkerScale  = vec3(0.9, 0.9, 0.9)
 Config.MarkerZOff   = -0.9
-Config.InteractKey  = 38 -- E
-Config.CooldownSeconds = 30 * 60 -- 30 minutes
+Config.InteractKey  = 38 
+Config.CooldownSeconds = 30 * 60 
 
--- If true: player cannot spawn a new job vehicle while their previous spawned
--- one (from this spawner) still exists.
+
+
 Config.BlockIfActiveVehicleExists = true
 
--- Job getter (Az-Framework)
+
 Config.GetPlayerJob = Config.GetPlayerJob or function(source)
     local job = exports['Az-Framework']:getPlayerJob(source)
     return job and string.lower(job) or 'civ'
 end
 
--- Character identity (Az-CharacterUI)
+
 Config.GetPlayerCharId = Config.GetPlayerCharId or function(source)
     local ui = exports['Az-CharacterUI']
     if not ui then return nil end
@@ -34,7 +34,7 @@ Config.GetPlayerCharId = Config.GetPlayerCharId or function(source)
     return nil
 end
 
--- Fallback identity (license)
+
 Config.GetPrimaryIdentifier = Config.GetPrimaryIdentifier or function(source)
     local license = GetPlayerIdentifierByType(source, 'license')
     if license and license ~= '' then
@@ -45,36 +45,74 @@ Config.GetPrimaryIdentifier = Config.GetPrimaryIdentifier or function(source)
     return ids[1] or ("src:" .. tostring(source))
 end
 
--- =========================================================
--- Your requested config style:
--- EMSLocations / FireLocations / PoliceLocations
--- Each has:
---   JobID
---   Locations = { { XYZH = vector4(...) , Label = "..." } }
---   Vehicles = { { model="...", label="..." }, ... }
--- =========================================================
+
+
+
+
+
+
+
+
 
 Config.EMSLocations = {
-    JobID = { 'ems', 'ems', 'doctor' }, -- you can change this list
-    Locations = {
-        {
-            Label = "Sandy EMS Bay",
-            XYZH  = vector4(1811.935, 3685.089, 34.224, 299.249)
-        }
+  JobID = { 'ems', 'ems', 'doctor' },
+
+  Locations = {
+    
+    {
+      Label = "Pillbox Hill Medical Center (Ambulance Bay)",
+      XYZH  = vector4(294.7, -1447.6, 29.97, 320.0)
     },
-    Vehicles = {
-        { model = 'ambulance', label = 'Ambulance' },
-        { model = 'emsnspeedo', label = 'EMS Speedo' }, -- if you have one
-    }
+    {
+      Label = "Pillbox Hill Medical Center (Helipad)",
+      XYZH  = vector4(338.9, -1416.9, 76.2, 135.0)
+    },
+
+    
+    {
+      Label = "Davis Medical (Ambulance Bay)",
+      XYZH  = vector4(393.54, -1438.81, 29.46, 311.30)
+    },
+
+    
+    {
+      Label = "Mount Zonah Medical Center (Ambulance Bay)",
+      XYZH  = vector4(-447.0, -340.6, 34.5, 80.0)
+    },
+    {
+      Label = "Mount Zonah Medical Center (Helipad)",
+      XYZH  = vector4(-449.3, -341.0, 78.3, 170.0)
+    },
+
+    
+    {
+      Label = "Sandy Shores Medical Center (Ambulance Bay)",
+      XYZH  = vector4(1811.935, 3685.089, 34.224, 299.249)
+    },
+    {
+      Label = "Paleto Bay Medical Center (Ambulance Bay)",
+      XYZH  = vector4(-254.6, 6339.6, 32.4, 45.0)
+    },
+  },
+
+  Vehicles = {
+    { model = 'ambulance',  label = 'Ambulance' },
+    { model = 'emsnspeedo', label = 'EMS Speedo' },
+  }
 }
 
+
 Config.FireLocations = {
-    JobID = { 'fire', 'safd' }, -- change to your job names
+    JobID = { 'fire', 'safd' }, 
     Locations = {
-        -- Example placeholder, change these:
+        
         {
             Label = "Fire Station",
             XYZH  = vector4(1703.133, 3596.905, 35.435, 228.946)
+        },
+        {
+          Label = "Strawberry Fire Station",
+          XYZH = vector4(194.96, -1671.42, 29.80, 231.79)
         }
     },
     Vehicles = {
@@ -83,9 +121,9 @@ Config.FireLocations = {
 }
 
 Config.PoliceLocations = {
-    JobID = { 'police', 'leo', 'sheriff' }, -- change to your job names
+    JobID = { 'police', 'leo', 'sheriff' }, 
     Locations = {
-        -- Example placeholder, change these:
+        
         {
             Label = "Mission Row Motorpool",
             XYZH  = vector4(451.0, -1018.0, 28.5, 90.0)
@@ -97,7 +135,7 @@ Config.PoliceLocations = {
     }
 }
 
--- Optional UI text
+
 Config.Text = {
     EMS   = "Press ~INPUT_CONTEXT~ to spawn an EMS vehicle",
     Fire  = "Press ~INPUT_CONTEXT~ to spawn a Fire vehicle",

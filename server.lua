@@ -1,9 +1,9 @@
--- az_jobveh_spawner / server.lua
 
-local lastSpawnByIdentity = {}   -- [identityKey][groupName] = os.time()
-local activeVehByIdentity = {}   -- [identityKey][groupName] = netId
 
--- Debug toggle
+local lastSpawnByIdentity = {}   
+local activeVehByIdentity = {}   
+
+
 Config.Debug = (Config.Debug == true)
 
 local function sdebug(msg)
@@ -66,7 +66,7 @@ local function remainingCooldown(identity, groupName)
     return rem
 end
 
--- Optional debug command
+
 RegisterCommand('az_jobdebug', function(src)
     if src == 0 then
         print('[az_jobveh] Use in-game: /az_jobdebug')
@@ -117,7 +117,7 @@ RegisterNetEvent('az_jobveh:requestSpawn', function(groupName, locationIndex, ve
     local identity = getIdentity(src)
     sdebug(('requestSpawn -> identity resolved as %s'):format(identity))
 
-    -- Block if active vehicle exists
+    
     if Config.BlockIfActiveVehicleExists then
         activeVehByIdentity[identity] = activeVehByIdentity[identity] or {}
         local netId = activeVehByIdentity[identity][groupName]
@@ -135,7 +135,7 @@ RegisterNetEvent('az_jobveh:requestSpawn', function(groupName, locationIndex, ve
         end
     end
 
-    -- Cooldown check
+    
     local rem = remainingCooldown(identity, groupName)
     if rem > 0 then
         sdebug(('requestSpawn -> cooldown remaining=%d sec'):format(rem))
@@ -155,7 +155,7 @@ RegisterNetEvent('az_jobveh:requestSpawn', function(groupName, locationIndex, ve
         return
     end
 
-    -- Approve spawn
+    
     lastSpawnByIdentity[identity] = lastSpawnByIdentity[identity] or {}
     lastSpawnByIdentity[identity][groupName] = os.time()
 

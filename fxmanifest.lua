@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 
-author 'Azure(TheStoicBear)'
+author 'MadebyAzure'
 description 'Az Job Vehicle Spawner (EMS/Fire/Police) w/ cooldown'
 version '1.0.0'
 

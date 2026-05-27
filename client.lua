@@ -1,5 +1,5 @@
--- az_jobveh_spawner / client.lua
--- Client does NOT job-check. Server is the only authority.
+
+
 
 local function prettyTime(seconds)
     seconds = tonumber(seconds) or 0
@@ -118,7 +118,7 @@ CreateThread(function()
                                     helpText(msg)
 
                                     if IsControlJustPressed(0, Config.InteractKey or 38) then
-                                        -- Server will approve/deny based on job + cooldown
+                                        
                                         TriggerServerEvent('az_jobveh:requestSpawn', g.name, i, 1)
                                     end
                                 end
